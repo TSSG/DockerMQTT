@@ -18,6 +18,10 @@ In order to run this image as a container for the first time run the script in t
 
 > ./dockerrun.sh
 
+To see whether the broker is up and running have a look in the log files
+
+> less ../src/cloud/log/mosquitto.log
+
 In order to enter this Docker container type
 
 > docker exec -it servo-msgbroker /bin/sh
@@ -32,4 +36,4 @@ In order to shutdown the running container use the command
 
 To start the container again just type
 
-> docker start servo-msgbroker 
+> docker start servo-msgbroker
