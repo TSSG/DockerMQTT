@@ -1,0 +1,36 @@
+1506011996: mosquitto version 1.4.10 (build date 2016-10-26 14:35:35+0000) starting
+1506011996: Config loaded from /mosquitto/config/mosquitto.conf.
+1506011996: Opening ipv4 listen socket on port 1883.
+1506011996: Opening ipv6 listen socket on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New connection from 172.17.0.1 on port 1883.
+1506011996: New client connected from 172.17.0.1 as 1506011996157 (c1, k60).
+1506011996: New client connected from 172.17.0.1 as 1506011995040 (c1, k60).
+1506011996: New client connected from 172.17.0.1 as LoadPublisherDebug (c1, k60).
+1506011996: New client connected from 172.17.0.1 as 1506011996156 (c1, k60).
+1506011996: New client connected from 172.17.0.1 as 1506011996159 (c1, k60).
+1506011996: New client connected from 172.17.0.1 as 1506011995038 (c1, k60).
+1506012261: Error in poll: Interrupted system call.
+1506012261: mosquitto version 1.4.10 terminating
+1506012376: mosquitto version 1.4.10 (build date 2016-10-26 14:35:35+0000) starting
+1506012376: Config loaded from /mosquitto/config/mosquitto.conf.
+1506012376: Opening ipv4 listen socket on port 1883.
+1506012376: Opening ipv6 listen socket on port 1883.
+1506012376: New connection from 172.17.0.1 on port 1883.
+1506012376: New connection from 172.17.0.1 on port 1883.
+1506012376: New connection from 172.17.0.1 on port 1883.
+1506012376: New connection from 172.17.0.1 on port 1883.
+1506012376: New connection from 172.17.0.1 on port 1883.
+1506012376: New client connected from 172.17.0.1 as 1506012376162 (c1, k60).
+1506012376: New client connected from 172.17.0.1 as 1506012376150 (c1, k60).
+1506012376: New client connected from 172.17.0.1 as 1506012376161 (c1, k60).
+1506012376: New client connected from 172.17.0.1 as 1506012376159 (c1, k60).
+1506012376: New client connected from 172.17.0.1 as 1506012376160 (c1, k60).
+1506012379: New connection from 172.17.0.1 on port 1883.
+1506012379: New client connected from 172.17.0.1 as LoadPublisherDebug (c1, k60).
+1506012516: Error in poll: Interrupted system call.
+1506012516: mosquitto version 1.4.10 terminating
