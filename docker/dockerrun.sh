@@ -13,7 +13,7 @@ sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/privkey.pem $(pwd)/../s
 # Run the main container.
 docker run \
     --name $NAME_SERVO \
-    -p 1883:1883 -p 9001:9001 \
+    -p 1883:1883 -p 8883:8883 -p 9001:9001 \
     -u `id -u $USER` \
     -v $(pwd)/../src/cloud/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf \
     -v $(pwd)/../src/cloud/conf/passwd:/mosquitto/config/passwd \
