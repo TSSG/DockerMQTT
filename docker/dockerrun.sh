@@ -12,5 +12,6 @@ docker run \
     -p 1883:1883 -p 9001:9001 \
     -u `id -u $USER` \
     -v $(pwd)/../src/cloud/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf \
+    -v $(pwd)/../src/cloud/conf/passwd:/mosquitto/config/passwd \
     -v $(pwd)/../src/cloud/log/:/mosquitto/log/ \
     -d -t servo/mosquitto
