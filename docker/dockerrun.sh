@@ -6,9 +6,9 @@
 # Give the container a meaningful name
 NAME_SERVO=servo-msgbroker
 
-sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/cert.pem $(pwd)/../src/cloud/conf/cert.pem
-sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/chain.pem $(pwd)/../src/cloud/conf/chain.pem
-sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/privkey.pem $(pwd)/../src/cloud/conf/privkey.pem
+sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/cert.pem $(pwd)/../src/cloud/conf/certs/cert.pem
+sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/chain.pem $(pwd)/../src/cloud/conf/certs/chain.pem
+sudo ln -s /etc/letsencrypt/live/servomsgbroker.tssg.org/privkey.pem $(pwd)/../src/cloud/conf/certs/privkey.pem
 
 # Run the main container.
 docker run \
@@ -17,8 +17,8 @@ docker run \
     -u `id -u $USER` \
     -v $(pwd)/../src/cloud/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf \
     -v $(pwd)/../src/cloud/conf/passwd:/mosquitto/config/passwd \
-    -v $(pwd)/../src/cloud/conf/cert.pem:/mosquitto/config/cert.pem \
-    -v $(pwd)/../src/cloud/conf/chain.pem:/mosquitto/config/chain.pem \
-    -v $(pwd)/../src/cloud/conf/privkey.pem:/mosquitto/config/privkey.pem \
+    -v $(pwd)/../src/cloud/conf/certs/cert.pem:/mosquitto/config/certs/cert.pem \
+    -v $(pwd)/../src/cloud/conf/certs/chain.pem:/mosquitto/config/certs/chain.pem \
+    -v $(pwd)/../src/cloud/conf/certs/privkey.pem:/mosquitto/config/certs/privkey.pem \
     -v $(pwd)/../src/cloud/log/:/mosquitto/log/ \
     -d -t servo/mosquitto
