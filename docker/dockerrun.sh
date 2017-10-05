@@ -9,7 +9,7 @@ cat <<-END
 Usage:
 ------
   -e environment servername
-    e.g. -e dev localhost, -e prod servomsgbroker.tssg.org, -e test servername
+    e.g. -e dev localhost, -e prod servomsgbroker.tssg.org
 END
 }
 
@@ -78,26 +78,6 @@ else
               run_container
               exit
             fi
-          elif [ "$2" == "test" ] ; then
-            if [ -z "$3" ] ; then
-             iHelp
-             exit
-           else
-             # Give the container a meaningful name
-             CONTAINER_NAME=servo-msgbroker-test
-
-             # Set the Secure MQTT port
-             PORT="-p 1883:1883"
-
-             # Set up the volumes to be attached
-             VOLUMES="-v $(pwd)/../src/local/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf \
-             -v $(pwd)/../src/local/conf/passwd:/mosquitto/config/passwd \
-             -v $(pwd)/../src/local/log/:/mosquitto/log/ \ "
-
-             #Run this Container
-             run_container
-             exit
-           fi
            else
              iHelp
              exit
