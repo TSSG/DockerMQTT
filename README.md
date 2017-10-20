@@ -49,7 +49,7 @@ You will be landed in to shell of the container and the main directory were the 
 
 In order to exit from the shell, CRTL-D.
 
-In order to shutdown the running devlopment container use the command
+In order to shutdown the running development container use the command
 
 > docker stop servo-msgbroker
 
