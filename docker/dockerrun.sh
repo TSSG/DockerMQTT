@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run the command with a parameter
-# > ./dockerrun.sh -e prod servomsgbroker.tssg.org
+# > ./dockerrun.sh -e prod reservemsgbroker.tssg.org
 
 function iHelp () {
 # Using a help doc with standard out.
@@ -9,7 +9,7 @@ cat <<-END
 Usage:
 ------
   -e environment servername
-    e.g. -e dev localhost, -e prod servomsgbroker.tssg.org
+    e.g. -e dev localhost, -e prod reservemsgbroker.tssg.org
 END
 }
 
@@ -48,7 +48,7 @@ else
               sudo ln -s /etc/letsencrypt/live/$3/privkey.pem $(pwd)/../src/cloud/conf/certs/privkey.pem
 
               # Give the container a meaningful name
-              CONTAINER_NAME=servo-msgbroker-ssl
+              CONTAINER_NAME=reserve-msgbroker-ssl
 
               # Set the Secure MQTT port
               PORT="-p 8883:8883"
@@ -66,7 +66,7 @@ else
               exit
             else
               # Give the container a meaningful name
-              CONTAINER_NAME=servo-msgbroker-local
+              CONTAINER_NAME=reserve-msgbroker-local
 
               # Set the Secure MQTT port
               PORT="-p 1883:1883"
