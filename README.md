@@ -32,6 +32,7 @@ or
 
 > ./dockerrun.sh -e prod servomsgbroker.tssg.org
 
+There is a "-e test localhost" option, but this is just for testing the username/password access to the broker.
 
 To see whether the broker is up and running have a look in the log files
 
