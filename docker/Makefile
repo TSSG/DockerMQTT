@@ -6,4 +6,4 @@
 all:: build
 
 build:
-	docker build --rm -t servo/mosquitto .
+	docker build --rm -t reserve/mosquitto .
