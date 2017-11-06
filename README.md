@@ -49,7 +49,9 @@ There is also a Python based test framework for the broker.
 It might be worth running this in a virtual environment.
 
 > pip install virtualenv
+
 > virtualenv servo-mqtt-env
+
 > source servo-mqtt-env/bin/activate
 
 To check for the Python dependancies do
