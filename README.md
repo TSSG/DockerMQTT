@@ -72,9 +72,9 @@ It might be worth running this in a Python virtual environment.
 
 > pip install virtualenv
 
-> virtualenv servo-mqtt-env
+> virtualenv reserve-mqtt-env
 
-> source servo-mqtt-env/bin/activate
+> source reserve-mqtt-env/bin/activate
 
 To check for the Python dependancies do
 
