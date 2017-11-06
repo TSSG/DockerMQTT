@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Copyright Waterford Institute of Technology 2017
+# Telecommunications Software and Systems Group (TSSG)
+# Author Miguel Ponce de Leon <miguelpdl@tssg.org>
+
 # Run the command with a parameter
 # > ./dockerrun.sh -e prod reservemsgbroker.tssg.org
 

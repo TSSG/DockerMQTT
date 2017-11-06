@@ -1,3 +1,7 @@
+# Copyright Waterford Institute of Technology 2017
+# Telecommunications Software and Systems Group (TSSG)
+# Author Miguel Ponce de Leon <miguelpdl@tssg.org>
+
 from behave import given, when, then, step
 import docker
 import json
