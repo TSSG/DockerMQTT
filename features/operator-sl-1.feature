@@ -13,7 +13,7 @@ Feature: Message Broker
 
     Examples:
       |named|runningstate|client|appropriate-message|
-      |servo-msgbroker-local|running|openfmb|Token|
+      |reserve-msgbroker-local|running|openfmb|Token|
       |bad name mgsbroker-local|not running|openfmb|Null|
 
 
@@ -26,5 +26,5 @@ Feature: Message Broker
 
     Examples:
       |named|runningstate|client|username|appropriate-message|
-      |servo-msgbroker-local|running|openfmb|servo|Token|
+      |reserve-msgbroker-local|running|openfmb|reserve|Token|
       |bad name msgbroker-local|not running|openfmb|service|Null|

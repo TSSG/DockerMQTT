@@ -21,7 +21,7 @@ docker run \
     ${PORT} \
     -u `id -u $USER` \
     ${VOLUMES} \
-    -d -t servo/mosquitto
+    -d -t reserve/mosquitto
 
 }
 

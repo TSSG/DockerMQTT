@@ -7,7 +7,7 @@ def buildTestImage():
     #Build an image
     path = "../../docker/"
     rm = true
-    tag = "servo/mosquitto"
+    tag = "reserve/mosquitto"
     dockerClient.images.build(path, rm, tag)
 
 def runOpenfmbClient(theDockerClient):
@@ -15,7 +15,7 @@ def runOpenfmbClient(theDockerClient):
 
     if theDockerClient.images.get("reserve/openfmb-demo"):
         if theDockerClient.containers.get("reserve-openfmb-demo"):
-            # Is the Docker container "servo-msgbroker-local" for dev to hand
+            # Is the Docker container "reserve-msgbroker-local" for dev to hand
             testMQTTClientDockerContainer = theDockerClient.containers.get("reserve-openfmb-demo")
             testMQTTClientDockerContainer.start()
 
@@ -25,23 +25,16 @@ def before_all(context):
     cwd = os.getcwd()
     global testDockerContainer
 
-    #Git update in the requirements.wiki
-
-    #Copy in the feature files
-    src = cwd + "/requirements.wiki/user-stories/servo-live-user-stories/servo-live-us/operator-us/features/operator-sl-1.asciidoc"
-    dst = cwd + "/features/operator-sl-1.feature"
-    copyfile(src, dst)
-
     # Start the docker message broker we have to hand
     dockerClient = docker.from_env()
 
-    # Is the Docker image servo/mosquitto available then use it
-    if dockerClient.images.get("servo/mosquitto"):
+    # Is the Docker image reserve/mosquitto available then use it
+    if dockerClient.images.get("reserve/mosquitto"):
         #Is the container already available then use it.
         try:
-            #if dockerClient.containers.get("servo-msgbroker-local"):
-            # Is the Docker container "servo-msgbroker-local" for dev to hand
-            testDockerContainer = dockerClient.containers.get("servo-msgbroker-local")
+            #if dockerClient.containers.get("reserve-msgbroker-local"):
+            # Is the Docker container "reserve-msgbroker-local" for dev to hand
+            testDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
             testDockerContainer.start()
 
             #Run the openfmb client
@@ -52,7 +45,7 @@ def before_all(context):
             dockerRunCommand = cwd + "/docker/dockerrun.sh"
             subprocess.call([dockerRunCommand, "-e", "dev", "localhost"])
 
-            testDockerContainer = dockerClient.containers.get("servo-msgbroker-local")
+            testDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
 
             #Run the openfmb client
             runOpenfmbClient(dockerClient)
@@ -62,8 +55,8 @@ def before_all(context):
         buildTestImage()
 
         #Run that image in a container
-        image = "servo/mosquitto"
-        name ="servo-msgbroker-local"
+        image = "reserve/mosquitto"
+        name ="reserve-msgbroker-local"
         ports = {'1883/tcp': 1883}
         volumes = {'./../src/local/conf/mosquitto.conf': {'bind': '/mosquitto/config/mosquitto.conf', 'mode': 'rw'},
         './../src/local/log/:/mosquitto/log/': {'bind': '/mosquitto/log/ ', 'mode': 'rw'}}

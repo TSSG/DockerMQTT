@@ -3,18 +3,18 @@ import docker
 import json
 import time
 
-@given(u'that I have the message broker servo-msgbroker-local')
+@given(u'that I have the message broker reserve-msgbroker-local')
 def step_impl(context):
     global dockerClient
     dockerClient = docker.from_env()
     global testMQTTBrokerDockerContainer
 
-    testMQTTBrokerDockerContainer = dockerClient.containers.get("servo-msgbroker-local")
+    testMQTTBrokerDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
 
     #Assert that the docker container is running
     assert 'running' in testMQTTBrokerDockerContainer.status
 
-@given(u'that servo-msgbroker-local is in a state of running')
+@given(u'that reserve-msgbroker-local is in a state of running')
 def step_impl(context):
 
     containerTopCmdResult = json.dumps(testMQTTBrokerDockerContainer.top())
@@ -55,7 +55,7 @@ def step_impl(context):
         badMsgBrokerRunning = False
 
     #If it doesn't great
-    #If it does make sure it's not another one (other than servo-msgbroker-local) with port 1883 open.
+    #If it does make sure it's not another one (other than reserve-msgbroker-local) with port 1883 open.
 
 @given(u'that bad name mgsbroker-local is in a state of not running')
 def step_impl(context):
