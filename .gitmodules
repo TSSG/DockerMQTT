@@ -1,0 +1,3 @@
+[submodule "requirements.wiki"]
+	path = requirements.wiki
+	url = git@servo.tssg.org:servoplatform/requirements.wiki.git
