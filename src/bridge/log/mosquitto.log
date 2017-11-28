@@ -1,0 +1,4 @@
+1506011996: mosquitto version 1.4.10 (build date 2016-10-26 14:35:35+0000) starting
+1506011996: Config loaded from /mosquitto/config/mosquitto.conf.
+1506011996: Opening ipv4 listen socket on port 1883.
+1506011996: Opening ipv6 listen socket on port 1883.

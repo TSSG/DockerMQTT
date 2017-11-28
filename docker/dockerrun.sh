@@ -13,7 +13,7 @@ cat <<-END
 Usage:
 ------
   -e environment servername
-    e.g. -e dev localhost, -e test localhost, -e prod reservemsgbroker.tssg.org
+    e.g. -e dev localhost, -e bridge localhost, -e prod reservemsgbroker.tssg.org
 END
 }
 
@@ -82,7 +82,7 @@ else
               run_container
               exit
             fi
-          elif [ "$2" == "test" ] ; then
+          elif [ "$2" == "bridge" ] ; then
             if [ -z "$3" ] ; then
              iHelp
              exit
@@ -91,10 +91,10 @@ else
              CONTAINER_NAME=reserve-msgbroker-passwd-local
 
              # Set the Secure MQTT port
-             PORT="-p 1883:1883"
+             PORT="-p 1885:1885"
 
              # Set up the volumes to be attached
-             VOLUMES="-v $(pwd)/../src/test/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf -v $(pwd)/../src/test/conf/passwd:/mosquitto/config/passwd -v $(pwd)/../src/test/log/:/mosquitto/log/ "
+             VOLUMES="-v $(pwd)/../src/bridge/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf -v $(pwd)/../src/bridge/log/:/mosquitto/log/ "
 
              #Run this Container
              run_container
