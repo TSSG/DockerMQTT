@@ -7,12 +7,11 @@ import os
 import subprocess
 from shutil import copyfile
 
-def buildTestImage():
+def buildTestImage(theDockerClient):
     #Build an image
-    path = "../../docker/"
-    rm = true
-    tag = "reserve/mosquitto"
-    dockerClient.images.build(path, rm, tag)
+    kwargs = {'path': '../../docker/', 'rm': True, 'tag':'reserve/mosquitto' }
+
+    theDockerClient.images.build(**kwargs)
 
 def runOpenfmbClient(theDockerClient):
     global testMQTTClientDockerContainer
@@ -32,44 +31,47 @@ def before_all(context):
     # Start the docker message broker we have to hand
     dockerClient = docker.from_env()
 
-    # Is the Docker image reserve/mosquitto available then use it
-    if dockerClient.images.get("reserve/mosquitto"):
+    # Is the Docker image servo/mosquitto available then use it
+    try:
+        dockerClient.images.get("reserve/mosquitto")
+
+    except docker.errors.NotFound:
+        #buildTestImage(dockerClient)
+        imageDockerFile = cwd + "/docker"
+        kwargs = {'path': imageDockerFile, 'rm': True, 'tag':'servo/mosquitto' }
+
+        dockerClient.images.build(**kwargs)
+
+    if dockerClient.images.get("servo/mosquitto"):
         #Is the container already available then use it.
         try:
-            #if dockerClient.containers.get("reserve-msgbroker-local"):
-            # Is the Docker container "reserve-msgbroker-local" for dev to hand
+
+            # Is the Docker container "servo-msgbroker-local" for dev to hand
             testDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
+
+            #If so then run it
             testDockerContainer.start()
 
-            #Run the openfmb client
+            #Then run the openfmb client for testing
             runOpenfmbClient(dockerClient)
 
         except docker.errors.NotFound:
-            #Run that image in a container
-            dockerRunCommand = cwd + "/docker/dockerrun.sh"
-            subprocess.call([dockerRunCommand, "-e", "dev", "localhost"])
+            #As the container does not exist then run that image in a container
+            image = "servo/mosquitto"
+            command = ''
 
-            testDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
+            confvol = cwd + "/src/local/conf/mosquitto.conf"
+            logvol = cwd + "/src/local/log/"
+
+            kwargs = {'name': 'servo-msgbroker-local',
+            'ports':{'1883/tcp': 1883},
+            'volumes': {confvol: {'bind': '/mosquitto/config/mosquitto.conf', 'mode': 'rw'},logvol: {'bind': '/mosquitto/log/ ', 'mode': 'rw'}},
+            'detach': True }
+
+            testDockerContainer = dockerClient.containers.run(image, command, **kwargs)
 
             #Run the openfmb client
             runOpenfmbClient(dockerClient)
-
-    else:
-        #Build an image
-        buildTestImage()
-
-        #Run that image in a container
-        image = "reserve/mosquitto"
-        name ="reserve-msgbroker-local"
-        ports = {'1883/tcp': 1883}
-        volumes = {'./../src/local/conf/mosquitto.conf': {'bind': '/mosquitto/config/mosquitto.conf', 'mode': 'rw'},
-        './../src/local/log/:/mosquitto/log/': {'bind': '/mosquitto/log/ ', 'mode': 'rw'}}
-        detach = True
-
-        testDockerContainer = dockerClient.containers.run(image, detach, name, ports, volumes)
-
-        #Run the openfmb client
-        runOpenfmbClient()
 
 
 def after_all(context):
