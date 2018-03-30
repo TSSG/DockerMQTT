@@ -42,7 +42,7 @@ There is a "-e test localhost" option, but this is just for testing the username
 
 To see whether the broker is up and running have a look in the log files
 
-> less ../src/cloud/log/mosquitto.log
+> less ../src/cloud-bridge/log/mosquitto.log
 
 In order to enter this Docker container when in development mode type the command
 

@@ -47,9 +47,9 @@ else
               exit
             else
               # Since its a production deploy Secure SSL mode needs to link in the servers keys
-              sudo ln -s /etc/letsencrypt/live/$3/cert.pem $(pwd)/../src/cloud/conf/certs/cert.pem
-              sudo ln -s /etc/letsencrypt/live/$3/chain.pem $(pwd)/../src/cloud/conf/certs/chain.pem
-              sudo ln -s /etc/letsencrypt/live/$3/privkey.pem $(pwd)/../src/cloud/conf/certs/privkey.pem
+              sudo ln -s /etc/letsencrypt/live/$3/cert.pem $(pwd)/../src/cloud-bridge/conf/certs/cert.pem
+              sudo ln -s /etc/letsencrypt/live/$3/chain.pem $(pwd)/../src/cloud-bridge/conf/certs/chain.pem
+              sudo ln -s /etc/letsencrypt/live/$3/privkey.pem $(pwd)/../src/cloud-bridge/conf/certs/privkey.pem
 
               # Give the container a meaningful name
               CONTAINER_NAME=reserve-msgbroker-ssl
@@ -58,7 +58,7 @@ else
               PORT="-p 8883:8883"
 
               # Set up the volumes to be attached
-              VOLUMES="-v $(pwd)/../src/cloud/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf -v $(pwd)/../src/cloud/conf/passwd:/mosquitto/config/passwd -v $(pwd)/../src/cloud/conf/certs/cert.pem:/mosquitto/config/certs/cert.pem -v $(pwd)/../src/cloud/conf/certs/chain.pem:/mosquitto/config/certs/chain.pem -v $(pwd)/../src/cloud/conf/certs/privkey.pem:/mosquitto/config/certs/privkey.pem -v $(pwd)/../src/cloud/log/:/mosquitto/log/ "
+              VOLUMES="-v $(pwd)/../src/cloud-bridge/conf/mosquitto.conf:/mosquitto/config/mosquitto.conf -v $(pwd)/../src/cloud-bridge/conf/passwd:/mosquitto/config/passwd -v $(pwd)/../src/cloud-bridge/conf/certs/cert.pem:/mosquitto/config/certs/cert.pem -v $(pwd)/../src/cloud-bridge/conf/certs/chain.pem:/mosquitto/config/certs/chain.pem -v $(pwd)/../src/cloud-bridge/conf/certs/privkey.pem:/mosquitto/config/certs/privkey.pem -v $(pwd)/../src/cloud-bridge/log/:/mosquitto/log/ "
 
               #Run this Container
               run_container
