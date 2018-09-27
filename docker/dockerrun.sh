@@ -22,6 +22,7 @@ function run_container () {
 # Run the main container.
 docker run \
     --name ${CONTAINER_NAME} \
+    --restart always \
     ${PORT} \
     -u `id -u $USER` \
     ${VOLUMES} \
