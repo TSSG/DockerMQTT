@@ -1,0 +1,15 @@
+Eclipse Mosquitto MQTT Server in Docker
+Copyright 2018 Waterford Institute of Technology.
+
+This product includes software developed at the
+Telecommunications Software and Systems Group (http://www.tssg.org/) at the
+Waterford Institute of Technology.
+
+This work is partly funded by the European Comission through the H2020 RE-SERVE
+project (Grant 727481).
+
+This software contains code derived from Docker.
+
+This software contains code derived from Eclipse Mosquitto.
+
+This software contains code derived from Behave.
