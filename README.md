@@ -32,13 +32,9 @@ or
 
 > ./dockerrun.sh -e prod reservemsgbroker.tssg.org
 
-<<<<<<< HEAD
-There is a "-e test localhost" option, but this is just for testing the username/password access to the broker.
-=======
 -e bridge localhost means it runs as a broker bridge to another mqtt broker with default port 1885 open.
 
--e prod servomsgbroker.tssg.org means the broker is run in full secure mode, with password file enabled and the SSL certs need to be in place.
->>>>>>> ea141fc... Updating to include the MQTT bridge briker set up.
+-e prod reservemsgbroker.tssg.org means the broker is run in full secure mode, with password file enabled and the SSL certs need to be in place.
 
 To see whether the broker is up and running have a look in the log files
 
