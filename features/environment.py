@@ -31,18 +31,18 @@ def before_all(context):
     # Start the docker message broker we have to hand
     dockerClient = docker.from_env()
 
-    # Is the Docker image servo/mosquitto available then use it
+    # Is the Docker image reserve/mosquitto available then use it
     try:
         dockerClient.images.get("reserve/mosquitto")
 
     except docker.errors.NotFound:
         #buildTestImage(dockerClient)
         imageDockerFile = cwd + "/docker"
-        kwargs = {'path': imageDockerFile, 'rm': True, 'tag':'servo/mosquitto' }
+        kwargs = {'path': imageDockerFile, 'rm': True, 'tag':'reserve/mosquitto' }
 
         dockerClient.images.build(**kwargs)
 
-    if dockerClient.images.get("servo/mosquitto"):
+    if dockerClient.images.get("reserve/mosquitto"):
         #Is the container already available then use it.
         try:
 
@@ -57,7 +57,7 @@ def before_all(context):
 
         except docker.errors.NotFound:
             #As the container does not exist then run that image in a container
-            image = "servo/mosquitto"
+            image = "reserve/mosquitto"
             command = ''
 
             confvol = cwd + "/src/local/conf/mosquitto.conf"
