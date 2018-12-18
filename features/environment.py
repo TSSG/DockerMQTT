@@ -46,14 +46,11 @@ def before_all(context):
         #Is the container already available then use it.
         try:
 
-            # Is the Docker container "servo-msgbroker-local" for dev to hand
+            # Is the Docker container "reserve-msgbroker-local" for dev to hand
             testDockerContainer = dockerClient.containers.get("reserve-msgbroker-local")
 
             #If so then run it
             testDockerContainer.start()
-
-            #Then run the openfmb client for testing
-            runOpenfmbClient(dockerClient)
 
         except docker.errors.NotFound:
             #As the container does not exist then run that image in a container
@@ -63,17 +60,13 @@ def before_all(context):
             confvol = cwd + "/src/local/conf/mosquitto.conf"
             logvol = cwd + "/src/local/log/"
 
-            kwargs = {'name': 'servo-msgbroker-local',
+            kwargs = {'name': 'reserve-msgbroker-local',
             'ports':{'1883/tcp': 1883},
             'volumes': {confvol: {'bind': '/mosquitto/config/mosquitto.conf', 'mode': 'rw'},logvol: {'bind': '/mosquitto/log/ ', 'mode': 'rw'}},
             'detach': True }
 
             testDockerContainer = dockerClient.containers.run(image, command, **kwargs)
 
-            #Run the openfmb client
-            runOpenfmbClient(dockerClient)
-
 
 def after_all(context):
     testDockerContainer.stop()
-    testMQTTClientDockerContainer.stop()
