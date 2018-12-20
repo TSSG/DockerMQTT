@@ -29,6 +29,8 @@ def step_impl(context):
 
 @when(u'I connect to the broker using a mqttclient')
 def step_impl(context):
+    global clientConnected
+    
     def on_connect(client, userdata, flags, rc):
         clientConnected = True
         print ("Test device connected with result code: " + str(rc))
@@ -37,7 +39,7 @@ def step_impl(context):
     def on_publish(client, userdata, mid):
         print ("Test device sent message")
 
-    global device_id, iot_hub_name, clientConnected
+    global device_id, iot_hub_name
 
     device_id = "test_client_"+str(time.time())
     iot_hub_name = "localhost"
@@ -50,6 +52,9 @@ def step_impl(context):
     client.on_publish = on_publish
 
     client.connect(iot_hub_name, port=1883)
+
+    client.loop_start()
+    time.sleep(2)
 
     connack_code = mqtt.connack_string(1)
     print(connack_code)
