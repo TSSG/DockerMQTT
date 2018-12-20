@@ -1,0 +1,5 @@
+1511886495: mosquitto version 1.4.10 (build date 2016-10-26 14:35:35+0000) starting
+1511886495: Config loaded from /mosquitto/config/mosquitto.conf.
+1511886495: Opening ipv4 listen socket on port 1885.
+1511886495: Opening ipv6 listen socket on port 1885.
+1511886495: Connecting bridge reserve-broker (172.17.0.2:1883)

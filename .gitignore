@@ -1,0 +1,5 @@
+# exclude everything
+src/cloud-bridge/conf/certs/*
+
+# exception to the rule
+!src/cloud-bridge/conf/certs/.gitkeep 
