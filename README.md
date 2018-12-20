@@ -116,10 +116,8 @@ To initialise the test framework run this command once
 
 > behave --tags=bootstrap
 
-You must have built a Docker version of the openfmb client as a container in your environment for this test to work.
-
 To run the first tests do
 
-> behave --tags=verifymessagebroker
+> behave
 
 Copyright Waterford Institute of Technology 2017-2018, Telecommunications Software and Systems Group (TSSG), Author Miguel Ponce de Leon <miguelpdl@tssg.org>
