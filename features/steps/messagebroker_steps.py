@@ -30,9 +30,11 @@ def step_impl(context):
 @when(u'I connect to the broker using a mqttclient')
 def step_impl(context):
     global clientConnected
-    
+
     def on_connect(client, userdata, flags, rc):
+        global clientConnected, resultCode
         clientConnected = True
+        resultCode = rc
         print ("Test device connected with result code: " + str(rc))
     def on_disconnect(client, userdata, rc):
         print ("Test device disconnected with result code: " + str(rc))
@@ -56,14 +58,12 @@ def step_impl(context):
     client.loop_start()
     time.sleep(2)
 
-    connack_code = mqtt.connack_string(1)
-    print(connack_code)
-
     #Assert that the docker container is running
     assert clientConnected is True
 
 @then(u'the appropriate-message Token is returned')
 def step_impl(context):
 
-    #Assert that a message Token is been sent by the Client successfully to the Broker.
-    assert True
+    #Assert that 0: Connection successful is sent back to the Client which
+    # has successfully connected to the Broker.
+    assert "0" in str(resultCode)
