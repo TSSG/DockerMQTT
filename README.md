@@ -121,3 +121,5 @@ To run the first tests do
 > behave
 
 Copyright Waterford Institute of Technology 2017-2018, Telecommunications Software and Systems Group (TSSG), Author Miguel Ponce de Leon <miguelpdl@tssg.org>
+
+This work is supported by European Union’s Horizon 2020 research and innovation programme under grant agreement No 727481, project RE-SERVE (Re- newables in a Stable Electric Grid)
